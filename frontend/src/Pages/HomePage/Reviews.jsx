@@ -1,5 +1,5 @@
 import ReviewCard from "./ReviewCard.jsx";  // Fix the import
-import { reviews } from "../Review-data.js";
+import { reviews } from "../../Review-data.js";
 
 export default function Reviews() {
   return (

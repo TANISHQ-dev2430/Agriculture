@@ -1,6 +1,11 @@
-import logoImg from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
+import logoImg from '../../assets/logo.png';
 export default function NavBar()
 {
+    const navigate = useNavigate();
+    function handleLogin() {
+        navigate('/login');
+    }
     const handleLogoClick = () => {
           window.location.href = "/"; // Redirect to the home page
     };
@@ -17,7 +22,7 @@ export default function NavBar()
             </nav>
             <div className="search-login">
                 <input type="text" placeholder="Search.." className="search-bar" />
-                <button className="login-btn">Login</button>
+                <button onClick={handleLogin} className="login-btn">Login</button>
             </div>
         </div>
     );
