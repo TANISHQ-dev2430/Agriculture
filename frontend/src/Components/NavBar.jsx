@@ -1,9 +1,13 @@
+import logoImg from '../assets/logo.png';
 export default function NavBar()
 {
+    const handleLogoClick = () => {
+          window.location.href = "/"; // Redirect to the home page
+    };
     return(
         <div className="navbar">
-            <header>
-                <img src="" alt="Logo Image" />
+            <header className='logo'>
+                <img src={logoImg} alt="Logo Image" onClick={handleLogoClick} />
                 {/* <h1>AgroBazaar</h1> */}
             </header>
             <nav className="nav-links">

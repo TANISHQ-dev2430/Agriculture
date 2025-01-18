@@ -1,18 +1,314 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap');
+
 
 *{
   box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
 }
 
-.navbar{
+#body{
+  background-color: #f7f3e9;
+}
+.navbar {
   display: flex;
-  width: 100%;
-  height: 50px;
-  margin-bottom: 8px;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid black;
-  box-shadow: 0px 0px 5px gray;
+  width: 100%;
+  padding: 10px 20px;
+  background-color :rgba(233,239,232,255);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
+/* Logo Section */
+.logo img {
+  padding-top: 20px;
+  padding-left: 20px;
+  width: 200px; /* Adjust the size of the logo */
+  height: auto;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 30px; /* Space between links */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333; /* Dark gray text */
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: large;
+  font-family: 'Poppins';
+}
+
+.nav-links a:hover {
+  color: green; /* Blue on hover */
+}
+
+/* Search and Login Section */
+.search-login {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-bar {
+  padding: 5px 10px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 7px;
+  font-size: 14px;
+  width: 200px; /* Adjust the search bar width */
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: rgb(116, 187, 116); /* Blue border on focus */
+}
+
+.login-btn {
+  background-color: rgba(233,239,232,255); /* Blue background */
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 15px;
+  font-family: 'Poppins';
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: rgb(116, 187, 116);
+  color: white; /* Darker blue on hover */
+}
+
+main{
+  align-content: center;
+  margin-bottom: 20px;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.auth-button {
+  padding: 10px 20px;
+  background-color: #a9745b;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins';
+}
+
+/* Hover Effect */
+.auth-button:hover {
+  background-color: #6b4f30;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Style for individual review cards */
+.reviewCard {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
+}
+
+.reviewCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.review-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+#reviewer-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Poppins';
+}
+
+#review-stars {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+#review-des {
+  font-size: 14px;
+  color: #555;
+  font-family: 'Nunito';
+}
+
+/* Style for the review section grid */
+.review-section {
+  margin: 20px;
+}
+
+.review-section h2 {
+  text-align: left;
+  font-size: 32px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  font-family: 'Poppins';
+}
+
+/* CSS Grid for the review modal */
+#feedback {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3 columns with equal width */
+  gap: 20px;
+  justify-items: center;
+  padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+  /* On smaller screens, make it 1 or 2 cards per row */
+  #feedback {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  /* On very small screens, make it 1 card per row */
+  #feedback {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* About Us Section Styling */
+#aboutus {
+  padding: 40px;
+  background-color: #fffaf3;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+/* Title Styling */
+#aboutus h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  text-align: left; /* Align title to the left */
+  margin-bottom: 20px;
+  font-family: 'Poppins';
+}
+
+/* Content Styling */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align image and paragraph */
+}
+
+.about-us-img {
+  width: 100%;
+  max-width: 600px; /* Limit the width of the image */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px; /* Space below the image */
+}
+
+.about-content p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  text-align: center; /* Center-align the paragraph */
+  font-family: 'Nunito';
+}
+
+#contactus {
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+#contactus h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items at the top */
+  flex-wrap: wrap; /* Ensure responsiveness */
+  gap: 20px; /* Space between the two sections */
+}
+
+.contact-details {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-details p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.social-links {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+
+.social-links h3 {
+  font-size: 20px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.social-links a img {
+  width: 40px; /* Icon size */
+  height: 40px;
+  margin: 5px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-links a img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  filter: brightness(1.2); /* Brighten icon on hover */
+}
+
+.footer {
+  background-color: #fffaf3;
+  color: black;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
