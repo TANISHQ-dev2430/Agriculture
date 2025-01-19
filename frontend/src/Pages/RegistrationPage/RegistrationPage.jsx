@@ -38,27 +38,17 @@ export default function RegistrationPage() {
       );
       const user = userCredential.user;
 
-      // Save user data in Firestore under "users" collection
-      await setDoc(doc(db, "users", user.uid), {
-        username: formData.username,
-        email: formData.email,
-        role: formData.role,
-      });
-      console.log("User data saved to Firestore:", {
-        username: formData.username,
-        email: formData.email,
-        role: formData.role,
-      });
+      // Determine the collection based on the role
+      const collectionName = formData.role === "consumer" ? "user" : "users";
 
-      // Optionally add to a different "user" collection
-      const userReference = collection(db, "user");
-      await addDoc(userReference, {
+      // Save user data in Firestore under the appropriate collection
+      await setDoc(doc(db, collectionName, user.uid), {
         uid: user.uid,
         username: formData.username,
         email: formData.email,
         role: formData.role,
       });
-      console.log("User data also saved to 'user' collection:", {
+      console.log(`User data saved to Firestore in ${collectionName} collection:`, {
         uid: user.uid,
         username: formData.username,
         email: formData.email,
@@ -66,12 +56,12 @@ export default function RegistrationPage() {
       });
 
       // Success notification and navigation
-      toast.success("User created successfully!");
+      toast.success("User registered successfully!");
       setFormData({ username: "", email: "", password: "", role: "" });
       navigate("/login"); // Navigate to the login page
     } catch (error) {
       setError(error.message);
-      console.error("Error saving user data:", error);
+      console.error("Error during registration:", error);
     }
   };
 
@@ -144,10 +134,10 @@ export default function RegistrationPage() {
 
       <div className="social-signup">
         <button className="google-button" onClick={handleGoogleSignUp}>
-          Google
+          Sign Up with Google
         </button>
         <button className="apple-button" onClick={handleAppleSignUp}>
-          Apple
+          Sign Up with Apple
         </button>
       </div>
       <p className="login-prompt">

@@ -34,8 +34,11 @@ function LoginPage() {
       const user = userCredential.user;
       console.log("Fetching user data for UID:", user.uid);
 
+      // Determine the collection based on the user type
+      const collectionName = userType === "consumer" ? "user" : "users";
+
       // Firestore query to fetch user data
-      const q = query(collection(db, "user"), where("uid", "==", user.uid));
+      const q = query(collection(db, collectionName), where("uid", "==", user.uid));
       const querySnapshot = await getDocs(q);
 
       let userData = null;
