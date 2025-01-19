@@ -1,27 +1,24 @@
-// CartDetails.jsx
 import React, { useEffect, useState } from "react";
 
 export default function CartDetails({ onCartUpdate }) {
-  const [cartItems, setCartItems] = useState([]);
+  // Mock cart items
+  const mockData = [
+    { id: 1, name: "Item 1", price: 100, quantity: 2 },
+    { id: 2, name: "Item 2", price: 200, quantity: 1 },
+    { id: 3, name: "Item 3", price: 50, quantity: 3 },
+  ];
 
-  // Fetch cart details from backend
+  const [cartItems, setCartItems] = useState(mockData); // State to store the cart items
+
   useEffect(() => {
-    async function fetchCartDetails() {
-      // Replace this with your backend API endpoint
-      const response = await fetch("https://api.example.com/cart");
-      const data = await response.json();
-      setCartItems(data);
-    }
-
-    fetchCartDetails();
-  }, []);
+    // Notify parent of the initial cart items
+    onCartUpdate(cartItems);
+  }, [cartItems, onCartUpdate]);
 
   // Function to increase the quantity of an item
   const increaseQuantity = (itemId) => {
     const updatedCart = cartItems.map((item) =>
-      item.id === itemId
-        ? { ...item, quantity: item.quantity + 1 }
-        : item
+      item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
     );
     setCartItems(updatedCart);
     onCartUpdate(updatedCart); // Notify parent of the updated cart
@@ -38,5 +35,7 @@ export default function CartDetails({ onCartUpdate }) {
     onCartUpdate(updatedCart); // Notify parent of the updated cart
   };
 
-  return { cartItems, increaseQuantity, decreaseQuantity };
+  return (
+    <div>{/* CartDetails only manages internal cart state and actions */}</div>
+  );
 }

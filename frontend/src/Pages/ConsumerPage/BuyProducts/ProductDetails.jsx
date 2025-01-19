@@ -1,8 +1,8 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./ProductDetails.css";
 
-function ProductDetails({ product }) {
-
+function ProductDetails({ product, onAddToCart }) {
   if (!product) {
     return (
       <div className="product-details">
@@ -17,7 +17,7 @@ function ProductDetails({ product }) {
       <img src={product.image} alt={product.name} className="detail-image" />
       <h2>{product.name}</h2>
       <p>
-        <strong>Price:</strong> {product.price}
+        <strong>Price:</strong> ₹{product.price}
       </p>
       <p>
         <strong>Quantity Available:</strong> {product.quantity}
@@ -25,7 +25,11 @@ function ProductDetails({ product }) {
       <p>
         <strong>Sold by:</strong> {product.seller}
       </p>
-      <button className="set-price-button">
+      <button
+        className="set-price-button"
+        onClick={() => onAddToCart(product)}
+
+      >
         Add to Cart
       </button>
     </div>

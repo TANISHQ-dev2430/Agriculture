@@ -1,18 +1,13 @@
-// CartPage.jsx
 import React, { useState } from "react";
 import CartDetails from "./CartDetails";
 import "./CartPage.css";
 
 function CartPage() {
-  const [cartData, setCartData] = useState([]);
+  const [cartData, setCartData] = useState([]); // State to hold cart data
 
   const handleCartUpdate = (updatedCart) => {
-    setCartData(updatedCart);
+    setCartData(updatedCart); // Update cart data when changes happen
   };
-
-  const { cartItems, increaseQuantity, decreaseQuantity } = CartDetails({
-    onCartUpdate: handleCartUpdate,
-  });
 
   const totalPrice = cartData.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -21,7 +16,6 @@ function CartPage() {
 
   return (
     <div className="cart-container">
-      {/* Sidebar is already included */}
       <div className="cart-page">
         <h2>My Cart</h2>
         {cartData.length === 0 ? (
@@ -33,9 +27,13 @@ function CartPage() {
                 <h3>{item.name}</h3>
                 <p>Price: ₹{item.price}</p>
                 <div className="quantity-controls">
-                  <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                  <button onClick={() => item.decreaseQuantity(item.id)}>
+                    -
+                  </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => increaseQuantity(item.id)}>+</button>
+                  <button onClick={() => item.increaseQuantity(item.id)}>
+                    +
+                  </button>
                 </div>
                 <p>Subtotal: ₹{item.price * item.quantity}</p>
               </div>
@@ -46,6 +44,9 @@ function CartPage() {
           <h3>Total Price: ₹{totalPrice}</h3>
         </div>
       </div>
+
+      {/* Pass handleCartUpdate prop to CartDetails */}
+      <CartDetails onCartUpdate={handleCartUpdate} />
     </div>
   );
 }

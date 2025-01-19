@@ -1,16 +1,26 @@
 import React, { useState } from "react";
-import SetPriceModal from "./SetPriceModal"; // Import the SetPriceModal component
+import SetPriceModal from "./SetPriceModal"; // Ensure this file exists and is correctly implemented
+import SetQuantityModal from "./SetQuantityModal"; // Ensure this file exists and is correctly implemented
 import "./ProductDetails.css";
 
-function ProductDetails({ product, onPriceSet }) {
-  const [isModalOpen, setIsModalOpen] = useState(false); // Track modal visibility
+function ProductDetails({ product, onPriceSet, onQuantitySet }) {
+  const [isPriceModalOpen, setIsPriceModalOpen] = useState(false); // Track price modal visibility
+  const [isQuantityModalOpen, setIsQuantityModalOpen] = useState(false); // Track quantity modal visibility
 
   const handleSetPrice = () => {
-    setIsModalOpen(true); // Open modal when button is clicked
+    setIsPriceModalOpen(true); // Open price modal
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false); // Close modal
+  const handleSetQuantity = () => {
+    setIsQuantityModalOpen(true); // Open quantity modal
+  };
+
+  const closePriceModal = () => {
+    setIsPriceModalOpen(false); // Close price modal
+  };
+
+  const closeQuantityModal = () => {
+    setIsQuantityModalOpen(false); // Close quantity modal
   };
 
   if (!product) {
@@ -38,13 +48,25 @@ function ProductDetails({ product, onPriceSet }) {
       <button className="set-price-button" onClick={handleSetPrice}>
         Set Price
       </button>
+      <button className="set-quantity-button" onClick={handleSetQuantity}>
+        Set Quantity
+      </button>
 
       {/* Conditionally render the SetPriceModal */}
-      {isModalOpen && (
+      {isPriceModalOpen && (
         <SetPriceModal
           product={product}
-          onPriceSet={onPriceSet} // Pass down the callback to update the price
-          closeModal={closeModal} // Pass the close modal function
+          onPriceSet={onPriceSet} // Pass the callback to update the price
+          closeModal={closePriceModal} // Pass the close modal function
+        />
+      )}
+
+      {/* Conditionally render the SetQuantityModal */}
+      {isQuantityModalOpen && (
+        <SetQuantityModal
+          product={product}
+          onQuantitySet={onQuantitySet} // Pass the callback to update the quantity
+          closeModal={closeQuantityModal} // Pass the close modal function
         />
       )}
     </div>
