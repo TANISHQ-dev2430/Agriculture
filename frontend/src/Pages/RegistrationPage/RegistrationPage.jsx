@@ -86,8 +86,9 @@ export default function RegistrationPage() {
   };
 
   return (
-    <div className="registration-page">
-      <h2>Sign Up</h2>
+    <div className="registration-page-container">
+      <div className="registration-page">
+      <h2 className="registration-header">Sign Up</h2>
       <form className="registration-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username</label>
@@ -143,10 +144,10 @@ export default function RegistrationPage() {
 
       <div className="social-signup">
         <button className="google-button" onClick={handleGoogleSignUp}>
-          Sign Up with Google
+          Google
         </button>
         <button className="apple-button" onClick={handleAppleSignUp}>
-          Sign Up with Apple
+          Apple
         </button>
       </div>
       <p className="login-prompt">
@@ -155,6 +156,7 @@ export default function RegistrationPage() {
           Log in
         </Link>
       </p>
+    </div>
     </div>
   );
 }

@@ -1,0 +1,36 @@
+/* Social Login Container */
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Space between the buttons */
+    width: 100%;
+    max-width: 410px; /* Ensure total width doesn't exceed 410px */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  /* Social Button Styling */
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    width: 48%; /* Take up 48% of the container width for each button */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Prevent any box-sizing issues */
+  }
+  
+  .social-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Social Icon Styling */
+  .social-icon {
+    width: 20px; /* Icon size */
+    height: 20px;
+    margin-right: 10px;
+  }
+  
