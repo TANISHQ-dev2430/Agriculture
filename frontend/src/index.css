@@ -17,7 +17,7 @@
   align-items: center;
   width: 100%;
   padding: 10px 20px;
-  background-color :rgba(233,239,232,255);
+  background-color :#81e623;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -26,7 +26,6 @@
 
 /* Logo Section */
 .logo img {
-  padding-top: 20px;
   padding-left: 20px;
   width: 200px; /* Adjust the size of the logo */
   height: auto;
@@ -88,10 +87,26 @@
   color: white; /* Darker blue on hover */
 }
 
-main{
-  align-content: center;
+/* styles.css */
+main {
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  min-height: 100vh; /* Full viewport height */
+  background-color: #f8f9fa; /* Light background color */
   margin-bottom: 20px;
+  padding-top: 20px;
 }
+
+.hero-img {
+  max-width: 75%; /* Make the image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  object-fit: cover; /* Ensure the image covers its container if needed */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effects */
+}
+
 
 .buttons{
   display: flex;

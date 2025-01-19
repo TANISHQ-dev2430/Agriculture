@@ -1,0 +1,25 @@
+.farmer-page-body{
+    display: flex;
+    flex-direction: column;
+}
+.farmer-page {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+}
+  
+  .sidebar {
+    flex: 0 0 250px; /* Fixed width for the sidebar */
+    background-color: #2f4f4f; /* Sidebar background */
+    color: white;
+}
+  
+  .content-area {
+    flex: 1; /* Take up the remaining space */
+    padding: 20px;
+    overflow-y: auto; 
+}
+.main-content{
+    flex: 1;
+}
+
+  
