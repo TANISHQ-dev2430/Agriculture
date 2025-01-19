@@ -8,7 +8,7 @@ function ProductList({ productList, onSelectProduct }) {
         <div
           key={product.id}
           className="product-card"
-          onClick={() => onSelectProduct(product)} // Notify parent of selected product
+          onClick={() => onSelectProduct(product)}
         >
           <img src={product.image} alt={product.name} className="product-image" />
           <h2>{product.name}</h2>
