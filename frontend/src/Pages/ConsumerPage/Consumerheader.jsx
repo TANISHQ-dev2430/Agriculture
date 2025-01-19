@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
-import profileLogo from '../../assets/review-logo-1.png';
-import "./FarmerHeader.css";
+import profileLogo from '../../assets/review-logo-3.png';
+import "./ConsumerHeader.css";
 
 function FarmerHeader() {
   const navigate = useNavigate(); // Initialize the useNavigate hook

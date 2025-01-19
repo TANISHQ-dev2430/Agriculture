@@ -1,22 +1,22 @@
 import React from "react";
-import { products } from "../data.js";
-import "../MyProducts/ProductList.css";
+import { rentals } from "./Rentaldata.js";
+import './RentalItem.css';
 
-function RentalItems({ onSelectProduct }) {
+function RentalItems({ onSelectRental }) {
   return (
     <div className="product-list">
-        <h3>Available Rental Items in Your Locality</h3>
-      {products.map((product) => (
+      {rentals.map((rental) => (
         <div
-          key={product.id}
+          key={rental.rentalId}
           className="product-card"
-          onClick={() => onSelectProduct(product)} // Notify parent of selected product
+          onClick={() => onSelectRental(rental)} // Notify parent of selected rental
         >
-          <img src={product.image} alt={product.name} className="product-image" />
-          <h2>{product.name}</h2>
-          <p>Price: {product.price}</p>
-          <p>Quantity: {product.quantity}</p>
-          <p>Seller: {product.seller}</p>
+          <img src={rental.image} alt={rental.name} className="product-image" />
+          <h2>{rental.name}</h2>
+          <p>Price: {rental.price}</p>
+          <p>Start Date: {rental.startDate}</p>
+          <p>End Date: {rental.endDate}</p>
+          <p>Seller: {rental.seller}</p>
         </div>
       ))}
     </div>

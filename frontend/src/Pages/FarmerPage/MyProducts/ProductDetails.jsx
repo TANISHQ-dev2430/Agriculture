@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import SetPriceModal from "./SetPriceModal"; // Import the SetPriceModal component
 import "./ProductDetails.css";
 
-function ProductDetails({ product }) {
+function ProductDetails({ product, onPriceSet }) {
+  const [isModalOpen, setIsModalOpen] = useState(false); // Track modal visibility
+
+  const handleSetPrice = () => {
+    setIsModalOpen(true); // Open modal when button is clicked
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // Close modal
+  };
+
   if (!product) {
     return (
       <div className="product-details">
@@ -24,7 +35,18 @@ function ProductDetails({ product }) {
       <p>
         <strong>Sold by:</strong> {product.seller}
       </p>
-      <button className="set-price-button">Set Price</button>
+      <button className="set-price-button" onClick={handleSetPrice}>
+        Set Price
+      </button>
+
+      {/* Conditionally render the SetPriceModal */}
+      {isModalOpen && (
+        <SetPriceModal
+          product={product}
+          onPriceSet={onPriceSet} // Pass down the callback to update the price
+          closeModal={closeModal} // Pass the close modal function
+        />
+      )}
     </div>
   );
 }

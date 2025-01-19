@@ -1,0 +1,61 @@
+/* SetPriceModal.css */
+
+.price-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+  }
+  
+  input {
+    padding: 10px;
+    margin-top: 10px;
+    width: 80%;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .submit-price-button,
+  .close-modal-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .submit-price-button {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  .submit-price-button:hover {
+    background-color: #1e8449;
+  }
+  
+  .close-modal-button {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .close-modal-button:hover {
+    background-color: #c0392b;
+  }
+  

@@ -1,0 +1,48 @@
+.sidebar {
+    width: 250px;
+    height: 100vh; /* Full viewport height */
+    background-color: #2f4f4f; /* Dark green background */
+    color: #ffffff; /* White text */
+    display: flex;
+    flex-direction: column; /* Arrange elements vertically */
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .sidebar-logo {
+    text-align: center;
+    margin-bottom: 30px; /* Add spacing below the logo */
+  }
+  
+  .sidebar-logo img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%; /* Make the image circular */
+  }
+  
+  .sidebar-logo h2 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+  
+  .sidebar-nav-links {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    width: 100%; /* Full width */
+  }
+  
+  .sidebar-nav-links li {
+    padding: 15px 20px; /* Add padding for clickable area */
+    text-align: left; /* Align text to the left */
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s; /* Smooth hover effect */
+  }
+  
+  .sidebar-nav-links li:hover {
+    background-color: #3b6e6e; /* Slightly lighter background on hover */
+    border-radius: 10px; /* Add rounded corners */
+  }
+  

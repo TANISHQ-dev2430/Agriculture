@@ -1,16 +1,36 @@
-.rental-page{
-    flex: 1;
-    height: max-content;
-}
-
-.rental-page h2{
-    font-size: large;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.rental-page-content{
+.rental-page {
     display: flex;
-    flex-direction: row;
-}
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+  }
+
+  .rental-page-header{
+    font-size: 28px;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .rental-page-content {
+    display: flex;
+    flex: 1;
+    gap: 20px; /* Space between the two sections */
+    overflow: hidden; /* Prevent scrollbars */
+  }
+  
+  .product-list {
+    flex: 3; /* Larger width for the items section */
+    overflow-y: auto; /* Enable scrolling if content exceeds */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .product-details {
+    flex: 1; /* Smaller width for the description section */
+    overflow-y: auto; /* Enable scrolling if content exceeds */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  

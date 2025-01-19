@@ -1,0 +1,39 @@
+.farmer-header {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+  }
+  .farmer-header-details{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .statistics {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .farmer-header-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }

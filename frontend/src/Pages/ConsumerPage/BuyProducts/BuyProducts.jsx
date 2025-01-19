@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductDetails from "./ProductDetails";
 import ProductList from "./ProductList";
 import { products } from "../data"; // Import product data
-import "./MyProducts.css";
+import "./BuyProducts.css";
 
 export default function MyProducts() {
   const [productList, setProductList] = useState(products); // State to hold the list of products
@@ -10,17 +10,6 @@ export default function MyProducts() {
 
   const handleSelectProduct = (product) => {
     setSelectedProduct(product); // Set the selected product
-  };
-
-  const handlePriceSet = (newPrice) => {
-    // Update the price of the selected product in the state
-    setProductList((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === selectedProduct.id
-          ? { ...product, price: newPrice } // Update price for the selected product
-          : product
-      )
-    );
   };
 
   return (
@@ -32,8 +21,7 @@ export default function MyProducts() {
           onSelectProduct={handleSelectProduct} // Pass the function to handle product selection
         />
         <ProductDetails
-          product={selectedProduct} // Pass the selected product to ProductDetails
-          onPriceSet={handlePriceSet} // Pass the function to set the price
+          product={selectedProduct}
         />
       </div>
     </div>

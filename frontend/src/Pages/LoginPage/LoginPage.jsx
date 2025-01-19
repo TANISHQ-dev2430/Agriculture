@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import SocialLogin from "./SocialLogin.jsx";
 import InputField from "./InputField.jsx";
 import "./LoginPage.css";
 
 function LoginPage() {
-  const [userType, setUserType] = useState(""); // "customer" or "seller"
+  const [userType, setUserType] = useState(""); // "consumer" or "seller"
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
 
-    // Redirect to appropriate page based on user type
-    if (userType === "customer") {
+    // Redirect based on user type
+    if (userType === "consumer") {
       navigate("/consumer");
     } else if (userType === "seller") {
       navigate("/farmer");
@@ -27,10 +27,10 @@ function LoginPage() {
           <h2>Select Account Type</h2>
           <div className="user-buttons">
             <button
-              onClick={() => setUserType("customer")}
+              onClick={() => setUserType("consumer")}
               className="user-button"
             >
-              Log in as Customer
+              Log in as Consumer
             </button>
             <button
               onClick={() => setUserType("seller")}
@@ -49,7 +49,7 @@ function LoginPage() {
     <div className="login-page">
       <div className="login-container">
         <h2 className="form-title">
-          Log in as {userType === "customer" ? "Customer" : "Seller"}
+          Log in as {userType === "consumer" ? "Consumer" : "Seller"}
         </h2>
         <SocialLogin />
         <p className="separator">
@@ -67,9 +67,9 @@ function LoginPage() {
         </form>
         <p className="signup-prompt">
           Don&apos;t have an account?{" "}
-          <a href="#" className="signup-link">
+          <Link to="/register" className="signup-link">
             Sign up
-          </a>
+          </Link>
         </p>
         <button onClick={() => setUserType("")} className="back-button">
           Back

@@ -1,0 +1,61 @@
+/* CartPage.css */
+
+/* Container for the sidebar and the cart content */
+.cart-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Sidebar styles - Assume your sidebar component has its own styles */
+  
+  /* Main cart content */
+  .cart-page {
+    flex: 1; /* Take up the remaining space next to the sidebar */
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+  }
+  
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .cart-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .quantity-controls button {
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .quantity-controls button:hover {
+    background-color: #1e8449;
+  }
+  
+  .cart-total {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
