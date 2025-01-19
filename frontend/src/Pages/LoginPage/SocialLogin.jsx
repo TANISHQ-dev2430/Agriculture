@@ -1,3 +1,4 @@
+import './SocialLogin.css';
 const SocialLogin = () => {
     return (
       <div className="social-login">

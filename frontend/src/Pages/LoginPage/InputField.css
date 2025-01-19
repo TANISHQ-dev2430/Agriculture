@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-wrapper {
+  width: 100%;
+  max-width: 410px; /* Ensure total width doesn't exceed 410px */
+  display: flex;
+  align-items: center;
+  position: relative; /* Required for positioning icons */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.input-field {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  padding-right: 40px; /* Space for the visibility icon */
+}
+
+.material-symbols-rounded {
+  position: absolute;
+  right: 10px; /* Align icon inside input */
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+}
+
+.eye-icon {
+  cursor: pointer;
+}
+
+.input-field::placeholder {
+  color: #888;
+}
