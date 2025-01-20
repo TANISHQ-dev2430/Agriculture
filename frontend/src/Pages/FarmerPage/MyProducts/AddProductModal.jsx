@@ -7,20 +7,20 @@ function AddProductModal({ onAddProduct, closeModal }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [seller, setSeller] = useState("");
+  const [username, setUsername] = useState(""); // State to store the farmer's username
 
   useEffect(() => {
-    const fetchSeller = async () => {
+    const fetchUsername = async () => {
       const user = auth.currentUser;
       if (user) {
         const userDoc = await getDoc(doc(db, "users", user.uid));
         if (userDoc.exists()) {
-          setSeller(userDoc.data().username);
+          setUsername(userDoc.data().username); // Set the username from the database
         }
       }
     };
 
-    fetchSeller();
+    fetchUsername();
   }, []);
 
   const handleAdd = async () => {
@@ -33,7 +33,7 @@ function AddProductModal({ onAddProduct, closeModal }) {
             price: parseFloat(price),
             quantity: parseInt(quantity, 10),
             farmerUid: user.uid,
-            seller,
+            seller: username, // Use the fetched username
           };
 
           // Add product to Firestore
@@ -64,12 +64,6 @@ function AddProductModal({ onAddProduct, closeModal }) {
     <div className="add-product-modal">
       <div className="modal-content">
         <h3>Add New Product</h3>
-        <input
-          type="text"
-          placeholder="Product Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
         <input
           type="text"
           placeholder="Product Name"
