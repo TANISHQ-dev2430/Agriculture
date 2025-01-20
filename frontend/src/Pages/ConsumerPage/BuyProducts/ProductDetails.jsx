@@ -14,7 +14,6 @@ function ProductDetails({ product, onAddToCart }) {
 
   return (
     <div className="product-details">
-      <img src={product.image || "https://via.placeholder.com/150"} alt={product.name} className="detail-image" />
       <h2>{product.name}</h2>
       <p>
         <strong>Price:</strong> ₹{product.price}

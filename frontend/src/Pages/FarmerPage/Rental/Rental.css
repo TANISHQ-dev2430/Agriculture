@@ -1,36 +1,75 @@
 .rental-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Full viewport height */
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
+  background-color: #f8f9fa; /* Subtle background for better contrast */
+  font-family: 'Arial', sans-serif; /* Clean and modern font */
+}
+
+.rental-page-header {
+  font-size: 30px; /* Slightly larger font for emphasis */
+  color: #333; /* Darker color for readability */
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase; /* Adds a polished look */
+}
+
+.rental-page-content {
+  display: flex;
+  flex: 1;
+  gap: 24px; /* Larger space between sections */
+  overflow: hidden; /* Prevent scrollbars for a cleaner layout */
+}
+
+.product-list {
+  flex: 3; /* Larger area for product listings */
+  overflow-y: auto; /* Allow scrolling for overflow */
+  padding: 15px;
+  background-color: #ffffff; /* Clean white background */
+  border-radius: 12px; /* Rounded corners for a modern look */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-sizing: border-box;
+}
+
+.product-details {
+  flex: 1; /* Smaller area for details */
+  overflow-y: auto; /* Allow scrolling for overflow */
+  padding: 15px;
+  background-color: #f5f5f5; /* Light gray background for contrast */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-sizing: border-box;
+}
+
+.product-list::-webkit-scrollbar,
+.product-details::-webkit-scrollbar {
+  width: 8px; /* Narrower scrollbar */
+}
+
+.product-list::-webkit-scrollbar-thumb,
+.product-details::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Subtle scrollbar color */
+  border-radius: 4px; /* Rounded scrollbar */
+}
+
+.product-list::-webkit-scrollbar-thumb:hover,
+.product-details::-webkit-scrollbar-thumb:hover {
+  background-color: #888; /* Darker on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rental-page-content {
+    flex-direction: column; /* Stack sections vertically on smaller screens */
+    gap: 20px; /* Adjust spacing for stacked layout */
   }
 
-  .rental-page-header{
-    font-size: 28px;
-    color: #444;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .rental-page-content {
-    display: flex;
-    flex: 1;
-    gap: 20px; /* Space between the two sections */
-    overflow: hidden; /* Prevent scrollbars */
-  }
-  
-  .product-list {
-    flex: 3; /* Larger width for the items section */
-    overflow-y: auto; /* Enable scrolling if content exceeds */
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
+  .product-list,
   .product-details {
-    flex: 1; /* Smaller width for the description section */
-    overflow-y: auto; /* Enable scrolling if content exceeds */
+    flex: none;
+    width: 100%; /* Full width for each section */
     padding: 10px;
-    box-sizing: border-box;
   }
-  
+}

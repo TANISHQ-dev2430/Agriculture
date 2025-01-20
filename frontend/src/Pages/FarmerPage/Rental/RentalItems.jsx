@@ -11,7 +11,6 @@ function RentalItems({ onSelectRental }) {
           className="product-card"
           onClick={() => onSelectRental(rental)} // Notify parent of selected rental
         >
-          <img src={rental.image} alt={rental.name} className="product-image" />
           <h2>{rental.name}</h2>
           <p>Price: {rental.price}</p>
           <p>Start Date: {rental.startDate}</p>

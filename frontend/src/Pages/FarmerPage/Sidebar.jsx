@@ -11,7 +11,6 @@ function Sidebar({ onSectionChange }) {
       </div>
       <ul className="sidebar-nav-links">
         <li onClick={() => onSectionChange("dashboard")}>Dashboard</li>
-        <li onClick={() => onSectionChange("weather")}>Weather Alerts</li>
         <li onClick={() => onSectionChange("myproducts")}>MyProducts</li>
         <li onClick={() => onSectionChange("rental")}>Rental</li>
       </ul>
