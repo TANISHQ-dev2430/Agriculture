@@ -2,6 +2,11 @@ import React from "react";
 import "./RentalItemDescription.css";
 
 function RentalItemDescription({ rental }) {
+  const handleRent = () => {
+    alert(`Item Details:\nName: ${rental.name}\nPrice: ${rental.price}\nStart Date: ${rental.startDate}\nEnd Date: ${rental.endDate}\nSold by: ${rental.seller}`);
+    alert("Purchase successful!");
+  };
+
   if (!rental) {
     return (
       <div className="product-details">
@@ -27,7 +32,7 @@ function RentalItemDescription({ rental }) {
       <p>
         <strong>Sold by:</strong> {rental.seller}
       </p>
-      <button className="set-price-button">Get On Rent</button>
+      <button className="set-price-button" onClick={handleRent}>Get On Rent</button>
     </div>
   );
 }

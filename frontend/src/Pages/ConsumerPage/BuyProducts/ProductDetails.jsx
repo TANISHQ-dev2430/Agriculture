@@ -3,7 +3,7 @@ import { db } from "../../../firebase/firebase.js";
 import { doc, getDoc } from "firebase/firestore";
 import "./ProductDetails.css";
 
-function ProductDetails({ product, onAddToCart }) {
+function ProductDetails({ product, onCheckout }) {
   const [sellerName, setSellerName] = useState("");
 
   useEffect(() => {
@@ -42,10 +42,10 @@ function ProductDetails({ product, onAddToCart }) {
         <strong>Sold by:</strong> {sellerName}
       </p>
       <button
-        className="add-to-cart-button"
-        onClick={() => onAddToCart(product)}
+        className="checkout-button"
+        onClick={() => onCheckout(product)}
       >
-        Add to Cart
+        Checkout
       </button>
     </div>
   );

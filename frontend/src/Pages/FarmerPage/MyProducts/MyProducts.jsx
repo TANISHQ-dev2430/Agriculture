@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { db, auth } from "../../../firebase/firebase.js"; // Import Firestore and auth
+import { collection, getDocs, query, where } from "firebase/firestore";
+import AddProductModal from "./AddProductModal";
 import ProductDetails from "./ProductDetails";
 import ProductList from "./ProductList";
-import AddProductModal from "./AddProductModal"; // Import AddProductModal
-import { db } from "../../../firebase/firebase.js"; // Import Firestore
-import { collection, getDocs } from "firebase/firestore";
 import "./MyProducts.css";
 
 export default function MyProducts() {
-  const [productList, setProductList] = useState([]); // Product list state
-  const [selectedProduct, setSelectedProduct] = useState(null); // Selected product state
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // Add modal visibility state
+  const [productList, setProductList] = useState([]); // State to hold the list of products
+  const [selectedProduct, setSelectedProduct] = useState(null); // State to track the selected product
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage the add product modal
 
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        const products = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setProductList(products);
-      } catch (error) {
-        console.error("Error fetching products:", error);
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          const q = query(collection(db, "products"), where("farmerUid", "==", user.uid));
+          const querySnapshot = await getDocs(q);
+          const products = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setProductList(products);
+        } catch (error) {
+          console.error("Error fetching products:", error);
+        }
       }
     };
 

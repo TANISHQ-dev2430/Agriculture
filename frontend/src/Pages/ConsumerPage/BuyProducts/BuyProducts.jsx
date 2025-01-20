@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import ProductDetails from "./ProductDetails";
 import ProductList from "./ProductList";
 import { db, auth } from "../../../firebase/firebase.js"; // Import Firestore and auth
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
+import PropTypes from "prop-types";
 import "./BuyProducts.css";
 
 export default function BuyProducts({ onAddToCart }) {
@@ -30,9 +31,21 @@ export default function BuyProducts({ onAddToCart }) {
     setSelectedProduct(product); // Set the selected product
   };
 
-  const handleAddToCart = (product) => {
+  const handleCheckout = async (product) => {
     onAddToCart(product); // Add product to cart
-    console.log("Adding to cart:", product);
+
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        const userCartRef = doc(db, "users", user.uid, "cart", product.id);
+        await setDoc(userCartRef, { ...product, quantity: 1 }, { merge: true });
+        alert("Purchase successful!");
+      } catch (error) {
+        console.error("Error adding product to user's cart:", error);
+      }
+    } else {
+      console.error("User not authenticated. Please log in.");
+    }
   };
 
   return (
@@ -45,9 +58,13 @@ export default function BuyProducts({ onAddToCart }) {
         />
         <ProductDetails
           product={selectedProduct}
-          onAddToCart={handleAddToCart}
+          onCheckout={handleCheckout} // Pass the function to handle checkout
         />
       </div>
     </div>
   );
 }
+
+BuyProducts.propTypes = {
+  onAddToCart: PropTypes.func.isRequired,
+};
