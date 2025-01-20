@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../../firebase/firebase.js";
-import { collection, addDoc, doc, getDoc } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc, deleteDoc } from "firebase/firestore";
 import "./AddProductModal.css";
 
-function AddProductModal({ onAddProduct, closeModal }) {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [username, setUsername] = useState(""); // State to store the farmer's username
+function AddProductModal({ product, onAddProduct, closeModal }) {
+  const [name, setName] = useState(product ? product.name : "");
+  const [price, setPrice] = useState(product ? product.price : "");
+  const [quantity, setQuantity] = useState(product ? product.quantity : "");
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -15,7 +15,7 @@ function AddProductModal({ onAddProduct, closeModal }) {
       if (user) {
         const userDoc = await getDoc(doc(db, "users", user.uid));
         if (userDoc.exists()) {
-          setUsername(userDoc.data().username); // Set the username from the database
+          setUsername(userDoc.data().username);
         }
       }
     };
@@ -33,21 +33,18 @@ function AddProductModal({ onAddProduct, closeModal }) {
             price: parseFloat(price),
             quantity: parseInt(quantity, 10),
             farmerUid: user.uid,
-            seller: username, // Use the fetched username
+            seller: username,
           };
 
-          // Add product to Firestore
           const docRef = await addDoc(collection(db, "products"), newProduct);
           console.log("Product added to Firestore:", newProduct);
 
-          // Call the onAddProduct callback with the new product
           onAddProduct({ id: docRef.id, ...newProduct });
 
-          // Clear the input fields
           setName("");
           setPrice("");
           setQuantity("");
-          closeModal(); // Close the modal after adding the product
+          closeModal();
         } catch (error) {
           console.error("Error adding product:", error);
           alert("Error adding product. Please try again.");
@@ -60,10 +57,25 @@ function AddProductModal({ onAddProduct, closeModal }) {
     }
   };
 
+  const handleDelete = async () => {
+    if (product && product.id) {
+      try {
+        await deleteDoc(doc(db, "products", product.id));
+        alert("Product deleted successfully!");
+        closeModal();
+      } catch (error) {
+        console.error("Error deleting product:", error);
+        alert("Failed to delete product. Please try again.");
+      }
+    } else {
+      alert("No product selected to delete.");
+    }
+  };
+
   return (
     <div className="add-product-modal">
       <div className="modal-content">
-        <h3>Add New Product</h3>
+        <h3>{product ? "Edit Product" : "Add New Product"}</h3>
         <input
           type="text"
           placeholder="Product Name"
@@ -83,11 +95,16 @@ function AddProductModal({ onAddProduct, closeModal }) {
           onChange={(e) => setQuantity(e.target.value)}
         />
         <button className="add-button" onClick={handleAdd}>
-          Add Product
+          {product ? "Update Product" : "Add Product"}
         </button>
         <button className="cancel-button" onClick={closeModal}>
           Cancel
         </button>
+        {product && (
+          <button className="delete-button" onClick={handleDelete}>
+            Delete Product
+          </button>
+        )}
       </div>
     </div>
   );
