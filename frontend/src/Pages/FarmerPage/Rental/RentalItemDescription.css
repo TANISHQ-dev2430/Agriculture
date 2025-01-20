@@ -1,38 +1,53 @@
 .product-details {
-    flex: 1;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-left: 1px solid #ddd;
-    box-sizing: border-box;
-    overflow-y: auto;
-  }
-  
-  .detail-image {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .product-details h2 {
-    margin-bottom: 10px;
-  }
-  
-  .product-details p {
-    margin: 5px 0;
-  }
-  
-  .set-price-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .set-price-button:hover {
-    background-color: #1e8449;
-  }
-  
+  flex: 1;
+  padding: 25px; /* Slightly increased padding for better spacing */
+  background-color: #f8f9fa; /* Softer background for better contrast */
+  border-left: 2px solid #e0e0e0; /* Thicker and lighter border for a polished look */
+  box-sizing: border-box;
+  border-radius: 12px; /* Rounded corners for a smoother appearance */
+  overflow-y: auto;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.05); /* Subtle inset shadow for depth */
+}
+
+.detail-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /* Rounded corners for consistency */
+  margin-bottom: 20px;
+  object-fit: cover; /* Ensures images maintain aspect ratio */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.product-details h2 {
+  font-size: 1.6rem; /* Slightly larger heading size */
+  font-weight: bold;
+  color: #333; /* Darker text for readability */
+  margin-bottom: 15px; /* Better spacing */
+}
+
+.product-details p {
+  font-size: 1rem; /* Standardized font size */
+  color: #555; /* Softer gray for better readability */
+  margin: 10px 0; /* Consistent spacing between paragraphs */
+  line-height: 1.5; /* Improved readability with better line spacing */
+}
+
+.set-price-button {
+  margin-top: 25px; /* Increased margin for better spacing */
+  padding: 12px 24px; /* Larger button for better usability */
+  background-color: rgb(12, 205, 12); /* Bright turquoise for a fresh, standout look */
+  color: #ffffff; /* White text for contrast */
+  border: none;
+  border-radius: 8px; /* More rounded corners for a modern design */
+  cursor: pointer;
+  font-size: 1.1rem; /* Larger font size for emphasis */
+  font-weight: bold;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and interaction effects */
+}
+
+.set-price-button:hover {
+  background-color: rgb(12, 205, 12);; /* Slightly darker turquoise for hover state */
+  transform: translateY(-2px); /* Subtle lift effect on hover */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}

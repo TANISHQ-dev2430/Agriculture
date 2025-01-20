@@ -12,7 +12,7 @@ export default function Rental() {
 
   return (
     <div className="rental-page">
-      <h2 className="rental-page-header">AgroBazaar Rentals</h2>
+      <h2 className="rental-page-header">AgroBazaar  Rentals</h2>
       <div className="rental-page-content">
         <RentalItems onSelectRental={handleSelectRental} />
         <RentalItemDescription rental={selectedRental} />
