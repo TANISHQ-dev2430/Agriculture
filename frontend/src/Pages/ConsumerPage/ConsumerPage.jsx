@@ -5,6 +5,7 @@ import ConsumerHeader from "./ConsumerHeader";
 import RecentPurchases from "./RecentPurchases";
 import BuyProducts from "./BuyProducts/BuyProducts.jsx";
 import CartPage from "./CartPage/CartPage.jsx";
+import "./ConsumerPage.css";
 
 function ConsumerPage() {
   const [activeSection, setActiveSection] = useState("dashboard"); // State to manage active content
