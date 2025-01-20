@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../CartPage/CartContext.jsx";
 import "./ProductDetails.css";
 
 function ProductDetails({ product }) {
+  const { addToCart } = useContext(CartContext);
 
   if (!product) {
     return (
@@ -11,6 +13,10 @@ function ProductDetails({ product }) {
       </div>
     );
   }
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
 
   return (
     <div className="product-details">
@@ -25,7 +31,7 @@ function ProductDetails({ product }) {
       <p>
         <strong>Sold by:</strong> {product.seller}
       </p>
-      <button className="set-price-button">
+      <button className="set-price-button" onClick={handleAddToCart}>
         Add to Cart
       </button>
     </div>

@@ -1,5 +1,5 @@
-// CartDetails.jsx
 import React, { useEffect, useState } from "react";
+import "./CartDetails.css";
 
 export default function CartDetails({ onCartUpdate }) {
   const [cartItems, setCartItems] = useState([]);
@@ -38,5 +38,23 @@ export default function CartDetails({ onCartUpdate }) {
     onCartUpdate(updatedCart); // Notify parent of the updated cart
   };
 
-  return { cartItems, increaseQuantity, decreaseQuantity };
+  return (
+    <div className="cart-details">
+      {cartItems.map((item) => (
+        <div key={item.id} className="cart-item">
+          <img src={item.image} alt={item.name} className="cart-item-image" />
+          <div className="cart-item-info">
+            <h3>{item.name}</h3>
+            <p>Price: ₹{item.price}</p>
+            <div className="quantity-controls">
+              <button onClick={() => decreaseQuantity(item.id)}>-</button>
+              <span>{item.quantity}</span>
+              <button onClick={() => increaseQuantity(item.id)}>+</button>
+            </div>
+            <p>Subtotal: ₹{item.price * item.quantity}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
