@@ -1,13 +1,11 @@
 import React from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import animation from '../../assets/Animation.mp4';
 
 const Animation = () => {
   return (
-    <DotLottieReact
-      src="https://lottie.host/a54d712b-0725-4426-9ae6-9612cfad8859/GOpMfZqsQ1.lottie"
-      loop
-      autoplay
-    />
+    <video autoPlay loop muted>
+      <source src={animation} type="video/mp4" />
+    </video>
   );
 };
 export default Animation;
