@@ -40,32 +40,24 @@ export const products = [
       price: "1000Rs/kg",
       quantity: "20Kg",
       seller: "Parideep Tanishq",
-      location: "Jaypee",
-      date: "18 Jan, 2025",
     },
     {
       item: "Strawberries",
       price: "1200Rs/kg",
       quantity: "15Kg",
       seller: "Aarav Sharma",
-      location: "Green Valley",
-      date: "15 Jan, 2025",
     },
     {
       item: "Honey",
       price: "800Rs/litre",
       quantity: "10 Litres",
       seller: "Riya Kapoor",
-      location: "Sunny Farms",
-      date: "12 Jan, 2025",
     },
     {
       item: "Sabji Set",
       price: "600Rs/set",
       quantity: "25 Sets",
       seller: "Vikram Mehta",
-      location: "Fresh Mart",
-      date: "10 Jan, 2025",
     },
   ];
   

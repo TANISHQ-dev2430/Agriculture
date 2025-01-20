@@ -1,24 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { db } from "../../../firebase/firebase.js";
-import { doc, getDoc } from "firebase/firestore";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import "./ProductDetails.css";
 
-function ProductDetails({ product, onCheckout }) {
-  const [sellerName, setSellerName] = useState("");
-
-  useEffect(() => {
-    const fetchSellerName = async () => {
-      if (product && product.farmerUid) {
-        const userDoc = await getDoc(doc(db, "users", product.farmerUid));
-        if (userDoc.exists()) {
-          setSellerName(userDoc.data().username);
-        }
-      }
-    };
-
-    fetchSellerName();
-  }, [product]);
-
+function ProductDetails({ product, onAddToCart }) {
   if (!product) {
     return (
       <div className="product-details">
@@ -42,8 +26,9 @@ function ProductDetails({ product, onCheckout }) {
         <strong>Sold by:</strong> {sellerName}
       </p>
       <button
-        className="checkout-button"
-        onClick={() => onCheckout(product)}
+        className="set-price-button"
+        onClick={() => onAddToCart(product)}
+
       >
         Checkout
       </button>

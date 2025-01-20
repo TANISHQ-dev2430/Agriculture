@@ -12,9 +12,7 @@ function RecentPurchases() {
             <p><strong>Item:</strong> {sale.item}</p>
             <p><strong>Price:</strong> {sale.price}</p>
             <p><strong>Quantity:</strong> {sale.quantity}</p>
-            <p><strong>Buyer:</strong> {sale.seller}</p>
-            <p><strong>Location:</strong> {sale.location}</p>
-            <p><strong>Date:</strong> {sale.date}</p>
+            <p><strong>Seller:</strong> {sale.seller}</p>
           </div>
         ))}
       </div>

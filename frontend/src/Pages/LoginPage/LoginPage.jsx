@@ -95,10 +95,6 @@ function LoginPage() {
         <h2 className="form-title">
           Log in as {userType === "consumer" ? "Consumer" : "Seller"}
         </h2>
-        <SocialLogin />
-        <p className="separator">
-          <span>or</span>
-        </p>
         <form onSubmit={handleLogin} className="login-form">
           <InputField
             type="email"

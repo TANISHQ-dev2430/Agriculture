@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./CartDetails.css";
 
 export default function CartDetails({ cartItems = [], onCartUpdate }) {
   const [items, setItems] = useState(cartItems); // State to store the cart items
