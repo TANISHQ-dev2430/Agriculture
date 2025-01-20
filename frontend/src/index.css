@@ -103,7 +103,7 @@ main {
   height: auto; /* Maintain aspect ratio */
   border-radius: 10px; /* Add rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-  object-fit: cover; /* Ensure the image covers its container if needed */
+  object-fit: contain; /* Ensure the image covers its container if needed */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effects */
 }
 
