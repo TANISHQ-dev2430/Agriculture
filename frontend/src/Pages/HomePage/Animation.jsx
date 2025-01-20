@@ -1,13 +1,13 @@
 import React from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import animation from '../../assets/Animation.mp4'; // Ensure the path to the video file is correct
 
 const Animation = () => {
   return (
-    <DotLottieReact
-      src="https://lottie.host/a54d712b-0725-4426-9ae6-9612cfad8859/GOpMfZqsQ1.lottie"
-      loop
-      autoplay
-    />
+    <video loop autoPlay muted style={{ width: '100%', height: 'auto' }}>
+      <source src={animation} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   );
 };
+
 export default Animation;
