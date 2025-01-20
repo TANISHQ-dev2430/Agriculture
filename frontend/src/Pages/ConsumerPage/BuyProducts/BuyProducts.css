@@ -91,7 +91,7 @@
 .set-price-button {
   margin-top: 25px;
   padding: 12px 24px;
-  background-color: #00ced1; /* Eye-catching color */
+  background-color: #2f4f4f; /* Eye-catching color */
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -102,7 +102,7 @@
 }
 
 .set-price-button:hover {
-  background-color: #00a9ab; /* Slightly darker shade on hover */
+  background-color: #2f4f4f; /* Slightly darker shade on hover */
   transform: scale(1.05); /* Subtle zoom effect */
 }
 
@@ -134,4 +134,17 @@
     font-size: 0.9rem;
     padding: 10px 20px; /* Adjust button size */
   }
+}
+
+.cart-button{
+  margin-top: -10px;
+  padding: 10px 15px;
+  background-color: #2f4f4f;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
