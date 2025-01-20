@@ -5,7 +5,7 @@ import "./RecentPurchases.css";
 function RecentPurchases() {
   return (
     <div className="recent-sales">
-      <h2>Recent Sales</h2>
+      <h2>Recent Purchases</h2>
       <div className="sales-grid">
         {purchaseData.map((sale, index) => (
           <div key={index} className="sale-card">
