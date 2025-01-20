@@ -7,6 +7,9 @@
     flex-direction: column; /* Arrange elements vertically */
     align-items: center;
     padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
   
   .sidebar-logo {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./CartDetails.css";
 
 export default function CartDetails({ onCartUpdate }) {
   // Mock cart items

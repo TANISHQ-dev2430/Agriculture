@@ -18,7 +18,7 @@ function CartPage() {
     <div className="cart-container">
       <div className="cart-page">
         <h2>My Cart</h2>
-        {cartData.length === 0 ? (
+        {updatedCart.length === 0 ? (
           <p>Your cart is empty!</p>
         ) : (
           <div className="cart-items">

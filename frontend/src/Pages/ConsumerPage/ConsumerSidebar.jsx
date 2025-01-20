@@ -12,7 +12,6 @@ function ConsumerSidebar({ onSectionChange }) {
       <ul className="sidebar-nav-links">
         <li onClick={() => onSectionChange("dashboard")}>Dashboard</li>
         <li onClick={() => onSectionChange("buyproducts")}>Buy Products</li>
-        <li onClick={() => onSectionChange("cartpage")}>Cart</li>
       </ul>
     </div>
   );

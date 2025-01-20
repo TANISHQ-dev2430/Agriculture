@@ -141,15 +141,6 @@ export default function RegistrationPage() {
           Register
         </button>
       </form>
-
-      <div className="social-signup">
-        <button className="google-button" onClick={handleGoogleSignUp}>
-          Google
-        </button>
-        <button className="apple-button" onClick={handleAppleSignUp}>
-          Apple
-        </button>
-      </div>
       <p className="login-prompt">
         Already have an account?{" "}
         <Link to="/login" className="login-link">

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import ConsumerSidebar from './ConsumerSidebar.jsx';
-import ConsumerHeader from './ConsumerHeader.jsx';
-import RecentPurchases from './RecentPurchases.jsx';
-import BuyProducts from './BuyProducts/BuyProducts.jsx';
-import CartPage from './CartPage/CartPage.jsx';
+import { CartProvider } from "./CartPage/CartContext.jsx";
+import ConsumerSidebar from "./ConsumerSidebar";
+import ConsumerHeader from "./ConsumerHeader";
+import RecentPurchases from "./RecentPurchases";
+import BuyProducts from "./BuyProducts/BuyProducts.jsx";
+import CartPage from "./CartPage/CartPage.jsx";
 import "./ConsumerPage.css";
 
 function ConsumerPage() {
@@ -22,16 +23,20 @@ function ConsumerPage() {
         return <BuyProducts />;
       case "cartpage":
         return <CartPage />;
+      default:
+        return <div>Page Not Found</div>;
     }
   };
 
   return (
-    <div className="farmer-page-body">
+    <CartProvider>
+      <div className="farmer-page-body">
         <div className="farmer-page">
-            <ConsumerSidebar onSectionChange={setActiveSection} />
-            <div className="main-content">{renderContent()}</div>
+          <ConsumerSidebar onSectionChange={setActiveSection} />
+          <div className="main-content">{renderContent()}</div>
         </div>
-    </div>
+      </div>
+    </CartProvider>
   );
 }
 
