@@ -39,7 +39,7 @@
 
 .nav-links a {
   text-decoration: none;
-  color: #333; /* Dark gray text */
+  color: #fff; /* Dark gray text */
   font-weight: 500;
   transition: color 0.3s ease;
   font-size: large;
@@ -229,7 +229,7 @@ main {
 #aboutus h2 {
   font-size: 32px;
   color: #2c3e50;
-  text-align: left; /* Align title to the left */
+  text-align: center; /* Align title to the left */
   margin-bottom: 20px;
   font-family: 'Poppins';
 }
