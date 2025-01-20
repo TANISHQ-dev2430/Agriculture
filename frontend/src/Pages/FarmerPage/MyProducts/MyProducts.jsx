@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductDetails from "./ProductDetails";
 import ProductList from "./ProductList";
 import AddProductModal from "./AddProductModal"; // Import AddProductModal
-import { products } from "../data"; // Import product data
+import { db } from "../../../firebase/firebase.js"; // Import Firestore
+import { collection, getDocs } from "firebase/firestore";
 import "./MyProducts.css";
 
 export default function MyProducts() {
-  const [productList, setProductList] = useState(products); // Product list state
+  const [productList, setProductList] = useState([]); // Product list state
   const [selectedProduct, setSelectedProduct] = useState(null); // Selected product state
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // Add modal visibility state
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "products"));
+        const products = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProductList(products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleSelectProduct = (product) => {
     setSelectedProduct(product); // Set selected product
@@ -39,30 +57,23 @@ export default function MyProducts() {
   };
 
   return (
-    <div className="myProducts">
-      <div className="header">
-        <h2 className="header-title">My Products</h2>
-        <button className="add-product-button" onClick={openAddModal}>
-          Add Product
-        </button>
-      </div>
-      <div className="products-content">
-        <ProductList
-          productList={productList}
-          onSelectProduct={handleSelectProduct}
-        />
+    <div className="my-products">
+      <h1>My Products</h1>
+      <button onClick={openAddModal} className="add-product-button">
+        Add Product
+      </button>
+      <ProductList
+        productList={productList}
+        onSelectProduct={handleSelectProduct}
+      />
+      {selectedProduct && (
         <ProductDetails
           product={selectedProduct}
           onPriceSet={handlePriceSet}
         />
-      </div>
-
-      {/* Add Product Modal */}
+      )}
       {isAddModalOpen && (
-        <AddProductModal
-          onAddProduct={handleAddProduct}
-          closeModal={closeAddModal}
-        />
+        <AddProductModal onAddProduct={handleAddProduct} closeModal={closeAddModal} />
       )}
     </div>
   );

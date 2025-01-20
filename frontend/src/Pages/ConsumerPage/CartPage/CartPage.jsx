@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import CartDetails from "./CartDetails";
 import "./CartPage.css";
 
-function CartPage() {
-  const [cartData, setCartData] = useState([]); // State to hold cart data
-
-  const handleCartUpdate = (updatedCart) => {
-    setCartData(updatedCart); // Update cart data when changes happen
-  };
-
+function CartPage({ cartData = [], onCartUpdate }) {
   const totalPrice = cartData.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
+
+  const handleCheckout = () => {
+    alert("Purchase successful!");
+    // Optionally, you can clear the cart or perform other actions here
+  };
 
   return (
     <div className="cart-container">
@@ -27,11 +26,11 @@ function CartPage() {
                 <h3>{item.name}</h3>
                 <p>Price: ₹{item.price}</p>
                 <div className="quantity-controls">
-                  <button onClick={() => item.decreaseQuantity(item.id)}>
+                  <button onClick={() => onCartUpdate(item.id, 'decrease')}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => item.increaseQuantity(item.id)}>
+                  <button onClick={() => onCartUpdate(item.id, 'increase')}>
                     +
                   </button>
                 </div>
@@ -40,13 +39,13 @@ function CartPage() {
             ))}
           </div>
         )}
-        <div className="cart-total">
-          <h3>Total Price: ₹{totalPrice}</h3>
-        </div>
+        <h3>Total Price: ₹{totalPrice}</h3>
+        {cartData.length > 0 && (
+          <button onClick={handleCheckout} className="checkout-button">
+            Proceed to Checkout
+          </button>
+        )}
       </div>
-
-      {/* Pass handleCartUpdate prop to CartDetails */}
-      <CartDetails onCartUpdate={handleCartUpdate} />
     </div>
   );
 }

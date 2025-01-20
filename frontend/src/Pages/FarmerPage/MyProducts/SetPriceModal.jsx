@@ -1,38 +1,47 @@
 import React, { useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { db, auth } from "../../../firebase/firebase.js";
 import "./SetPriceModal.css";
 
-function SetPriceModal({ product, onPriceSet, closeModal }) {
-  const [newPrice, setNewPrice] = useState(product.price);
+function SetPriceModal({ product, onClose, onPriceSet }) {
+  const [newPrice, setNewPrice] = useState("");
 
-  const handlePriceChange = (e) => {
-    setNewPrice(e.target.value); // Set the new price from input
-  };
-
-  const handleSubmit = () => {
-    if (newPrice > 0) {
-      onPriceSet(newPrice); // Update the product price in parent
-      closeModal(); // Close the modal after setting the price
+  const handleUpdatePrice = async () => {
+    if (newPrice) {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          const productRef = doc(db, "products", product.id);
+          await updateDoc(productRef, { price: parseFloat(newPrice) });
+          onPriceSet(parseFloat(newPrice));
+          onClose();
+        } catch (error) {
+          console.error("Error updating price:", error);
+          alert("Error updating price. Please try again.");
+        }
+      } else {
+        alert("User not authenticated. Please log in.");
+      }
     } else {
       alert("Please enter a valid price.");
     }
   };
 
   return (
-    <div className="price-modal">
+    <div className="set-price-modal">
       <div className="modal-content">
-        <h3>Set a New Price for {product.name}</h3>
+        <h3>Set New Price for {product.name}</h3>
         <input
           type="number"
+          placeholder="New Price"
           value={newPrice}
-          onChange={handlePriceChange}
-          min="0"
-          placeholder="Enter new price"
+          onChange={(e) => setNewPrice(e.target.value)}
         />
-        <button className="submit-price-button" onClick={handleSubmit}>
-          Submit
+        <button className="update-button" onClick={handleUpdatePrice}>
+          Update Price
         </button>
-        <button className="close-modal-button" onClick={closeModal}>
-          Close
+        <button className="cancel-button" onClick={onClose}>
+          Cancel
         </button>
       </div>
     </div>

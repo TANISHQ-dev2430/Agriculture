@@ -1,20 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { auth, db } from "../../../firebase/firebase.js";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 import "./AddProductModal.css";
 
 function AddProductModal({ onAddProduct, closeModal }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [username, setUsername] = useState(""); // State to store the farmer's username
 
-  const handleAdd = () => {
-    if (name && price > 0 && quantity >= 0) {
-      const newProduct = {
-        id: Date.now(), // Use a unique ID for the new product
-        name,
-        price: Number(price),
-        quantity: Number(quantity),
-      };
-      onAddProduct(newProduct);
+  useEffect(() => {
+    const fetchUsername = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setUsername(userDoc.data().username); // Set the username from the database
+        }
+      }
+    };
+
+    fetchUsername();
+  }, []);
+
+  const handleAdd = async () => {
+    if (name && price && quantity) {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          const newProduct = {
+            name,
+            price: parseFloat(price),
+            quantity: parseInt(quantity, 10),
+            farmerUid: user.uid,
+            seller: username, // Use the fetched username
+          };
+
+          // Add product to Firestore
+          const docRef = await addDoc(collection(db, "products"), newProduct);
+          console.log("Product added to Firestore:", newProduct);
+
+          // Call the onAddProduct callback with the new product
+          onAddProduct({ id: docRef.id, ...newProduct });
+
+          // Clear the input fields
+          setName("");
+          setPrice("");
+          setQuantity("");
+          closeModal(); // Close the modal after adding the product
+        } catch (error) {
+          console.error("Error adding product:", error);
+          alert("Error adding product. Please try again.");
+        }
+      } else {
+        alert("User not authenticated. Please log in.");
+      }
     } else {
       alert("Please enter valid product details.");
     }
