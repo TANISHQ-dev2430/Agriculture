@@ -1,8 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { CartContext } from "./CartContext.jsx";
 import "./ProductDetails.css";
 
-function ProductDetails({ product, onAddToCart }) {
+function ProductDetails({ product }) {
+  const { addItemToCart } = useContext(CartContext);
+
   if (!product) {
     return (
       <div className="product-details">
@@ -11,10 +13,6 @@ function ProductDetails({ product, onAddToCart }) {
       </div>
     );
   }
-
-  const handleAddToCart = () => {
-    addToCart(product);
-  };
 
   return (
     <div className="product-details">
@@ -31,8 +29,7 @@ function ProductDetails({ product, onAddToCart }) {
       </p>
       <button
         className="set-price-button"
-        onClick={() => onAddToCart(product)}
-
+        onClick={() => addItemToCart(product)}
       >
         Add to Cart
       </button>
