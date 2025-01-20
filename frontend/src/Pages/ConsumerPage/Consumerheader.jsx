@@ -51,20 +51,7 @@ function ConsumerHeader() {
             <h2>{user ? user.username : "Loading..."}</h2>
           </div>
         </div>
-        <div className="statistics">
-          <div className="stat-box">
-            <h3>Sales</h3>
-            <p>62% of Total Products</p>
-          </div>
-          <div className="stat-box">
-            <h3>Rating</h3>
-            <p>⭐⭐⭐⭐⭐</p>
-          </div>
-          <div className="stat-box">
-            <h3>Revenue</h3>
-            <p>150,696 Rs.</p>
-          </div>
-        </div>
+        
       </div>
       <div className="farmer-header-buttons">
         <button className="login-btn" onClick={handleLogout}>LogOut</button> {/* Attach the handleLogout function */}
