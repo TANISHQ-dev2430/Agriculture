@@ -13,7 +13,6 @@ function RentalItemDescription({ rental }) {
 
   return (
     <div className="product-details">
-      <img src={rental.image} alt={rental.name} className="detail-image" />
       <h2>{rental.name}</h2>
       <p>
         <strong>Price:</strong> {rental.price}

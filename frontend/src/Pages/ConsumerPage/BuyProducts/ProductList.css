@@ -1,22 +1,67 @@
 .product-list {
-    flex: 2;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
-  .product-card {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .product-card:hover {
-    transform: scale(1.05);
-  }
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly larger minimum width for better visuals */
+  gap: 24px; /* Increased gap for better spacing between cards */
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f8f9fa; /* Subtle background for contrast */
+  border-radius: 12px; /* Slightly rounded edges for the container */
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.05); /* Soft inset shadow for depth */
+  box-sizing: border-box;
+}
+
+.product-card {
+  background-color: #ffffff; /* Clean white background for cards */
+  padding: 20px;
+  border: 1px solid #e0e0e0; /* Softer border color for a modern look */
+  border-radius: 12px; /* Slightly rounded corners */
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effects */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Adds a lift effect on hover */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Matches card's rounded corners */
+  margin-bottom: 15px; /* Space below the image */
+  object-fit: cover; /* Ensures images look good regardless of dimensions */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333; /* Darker text for readability */
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #666; /* Softer gray for secondary text */
+  margin: 5px 0 15px;
+}
+
+.product-card button {
+  padding: 10px 15px;
+  background-color: #00ced1; /* Bright turquoise for a standout button */
+  color: #ffffff; /* White text for contrast */
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth interaction */
+}
+
+.product-card button:hover {
+  background-color: #00a9ab; /* Slightly darker turquoise on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}

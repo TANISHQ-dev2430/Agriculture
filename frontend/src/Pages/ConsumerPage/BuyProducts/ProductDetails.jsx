@@ -16,7 +16,6 @@ function ProductDetails({ product }) {
 
   return (
     <div className="product-details">
-      <img src={product.image} alt={product.name} className="detail-image" />
       <h2>{product.name}</h2>
       <p>
         <strong>Price:</strong> ₹{product.price}
